@@ -1,42 +1,49 @@
 # Search Algorithm Roadmap
 
-This project provides a comprehensive roadmap for understanding and implementing various search algorithms. It includes explanations, pseudocode, and implementations in multiple programming languages to aid learning and application.
+This project demonstrates how to calculate the distance between Porto Unico and Curitiba using a heuristic-based approach—specifically, the Greedy Algorithm. Heuristics are practical strategies for solving problems that may not guarantee a perfect solution but provide sufficiently good results within time or resource constraints.
 
-## Table of Contents
+In this case, the Greedy Algorithm is used to make locally optimal choices at each step with the hope of finding the global optimum path.
 
-- [Introduction](#introduction)
-- [Algorithms Covered](#algorithms-covered)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+🧠 Heuristic Strategy Overview
+The algorithm is implemented in two main parts:
 
-## Introduction
+Graph Construction – Defining Vertex, Adjacent, and Graph classes to model the map.
 
-Understanding search algorithms is fundamental in computer science, as they are widely used in various applications. This repository aims to serve as a resource for learning and implementing different search algorithms.
+Greedy Pathfinding – Creating and using an OrderedArray to determine the next best path based on heuristic distance.
 
-## Algorithms Covered
+📦 Code Structure and Explanation
+🔹 Class: Vertex
+Represents a node in the graph.
 
-The repository includes the following search algorithms:
+Constructor Parameters:
 
-- Linear Search
-- Binary Search
-- Depth-First Search (DFS)
-- Breadth-First Search (BFS)
-- A* Search
-- Dijkstra's Algorithm
+label: A unique identifier for the vertex (e.g., city name).
 
-Each algorithm is accompanied by:
+visited: A boolean flag (default False) to mark whether the node has been visited.
 
-- A brief explanation
-- Pseudocode
-- Implementations in multiple programming languages
+distance_objective: A heuristic estimate (e.g., straight-line distance) to the target vertex.
 
-## Getting Started
+adjacent: A list holding adjacent nodes connected to this vertex.
 
-To get started with this project:
+Methods:
 
-1. Clone the repository:
+add_adjacent(self, adjacent): Adds an adjacent vertex (an Adjacent instance) to the adjacency list.
 
-   ```bash
-   git clone https://github.com/ligiatatucu/search-alghoritm-roadmap.git
+print_method(self): Prints the label and cost of each adjacent vertex, helpful for debugging or visualizing the graph.
+
+🔹 Class: Adjacent
+Represents an edge or connection from one vertex to another.
+
+Purpose:
+
+Encapsulates both the target vertex and the cost to reach it.
+
+Provides a clean and structured way to manage relationships between nodes, including weights (distances).
+
+Attributes:
+
+vertex: A reference to the target Vertex object.
+
+cost: The cost or distance of the connection from the current vertex to the adjacent one.
+
+This separation of Vertex and Adjacent classes allows for a modular and extendable graph structure, which is ideal when implementing pathfinding algorithms.
